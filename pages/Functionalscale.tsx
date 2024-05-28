@@ -4,23 +4,23 @@ import * as React from "react";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
 import GlobalContextsProvider from "../components/plasmic/gu_lou_patient/PlasmicGlobalContextsProvider";
 
-import { Plasmic_12Functionalscale } from "../components/plasmic/gu_lou_patient/Plasmic_12Functionalscale";
+import { Plasmic_121FunctionalScale } from "../components/plasmic/gu_lou_patient/Plasmic_121FunctionalScale";
 import { useRouter } from "next/router";
 
-function _12Functionalscale() {
-  // Use Plasmic_12Functionalscale to render this component as it was
+function _121FunctionalScale() {
+  // Use Plasmic_121FunctionalScale to render this component as it was
   // designed in Plasmic, by activating the appropriate variants,
   // attaching the appropriate event handlers, etc.  You
   // can also install whatever React hooks you need here to manage state or
   // fetch data.
   //
-  // Props you can pass into Plasmic_12Functionalscale are:
+  // Props you can pass into Plasmic_121FunctionalScale are:
   // 1. Variants you want to activate,
   // 2. Contents for slots you want to fill,
   // 3. Overrides for any named node in the component to attach behavior and data,
   // 4. Props to set on the root node.
   //
-  // By default, Plasmic_12Functionalscale is wrapped by your project's global
+  // By default, Plasmic_121FunctionalScale is wrapped by your project's global
   // variant context providers. These wrappers may be moved to
   // Next.js Custom App component
   // (https://nextjs.org/docs/advanced-features/custom-app).
@@ -31,10 +31,10 @@ function _12Functionalscale() {
         params={useRouter()?.query}
         query={useRouter()?.query}
       >
-        <Plasmic_12Functionalscale />
+        <Plasmic_121FunctionalScale />
       </PageParamsProvider__>
     </GlobalContextsProvider>
   );
 }
 
-export default _12Functionalscale;
+export default _121FunctionalScale;

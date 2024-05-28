@@ -58,8 +58,6 @@ import {
   useDataEnv,
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
-import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdRadio } from "@plasmicpkgs/antd5/skinny/registerRadio";
@@ -666,7 +664,7 @@ function Plasmic_113FrailtyScale__RenderFunc(props: {
                     const actionArgs = {
                       destination: (() => {
                         try {
-                          return $ctx.config.routePrefix + "/Preparation";
+                          return $ctx.config.routePrefix + "/Scale";
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -708,7 +706,7 @@ function Plasmic_113FrailtyScale__RenderFunc(props: {
                 sty.text__mtOcx
               )}
             >
-              {"\u8fd4\u56de"}
+              {"\u5b8c\u6210"}
             </div>
           </div>
         </div>
@@ -799,51 +797,9 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
   return func;
 }
 
-function withPlasmicPageGuard<P extends object>(
-  WrappedComponent: React.ComponentType<P>
-) {
-  const PageGuard: React.FC<P> = props => (
-    <PlasmicPageGuard__
-      minRole={null}
-      appId={"oGeya3WnsoRJC1KzKAMsFn"}
-      authorizeEndpoint={"https://studio.plasmic.app/authorize"}
-      canTriggerLogin={true}
-    >
-      <WrappedComponent {...props} />
-    </PlasmicPageGuard__>
-  );
-
-  return PageGuard;
-}
-
-function withUsePlasmicAuth<P extends object>(
-  WrappedComponent: React.ComponentType<P>
-) {
-  const WithUsePlasmicAuthComponent: React.FC<P> = props => {
-    const dataSourceCtx = usePlasmicDataSourceContext() ?? {};
-    const { isUserLoading, user, token } = plasmicAuth.usePlasmicAuth({
-      appId: "oGeya3WnsoRJC1KzKAMsFn"
-    });
-
-    return (
-      <PlasmicDataSourceContextProvider__
-        value={{
-          ...dataSourceCtx,
-          isUserLoading,
-          userAuthToken: token,
-          user
-        }}
-      >
-        <WrappedComponent {...props} />
-      </PlasmicDataSourceContextProvider__>
-    );
-  };
-  return WithUsePlasmicAuthComponent;
-}
-
 export const Plasmic_113FrailtyScale = Object.assign(
   // Top-level Plasmic_113FrailtyScale renders the root element
-  withUsePlasmicAuth(withPlasmicPageGuard(makeNodeComponent("root"))),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
     radioGroup: makeNodeComponent("radioGroup"),

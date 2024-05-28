@@ -58,8 +58,6 @@ import {
   useDataEnv,
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
-import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdRadio } from "@plasmicpkgs/antd5/skinny/registerRadio";
@@ -205,10 +203,10 @@ function Plasmic_112NutritionScale__RenderFunc(props: {
               {"\u6587\u7ae0"}
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__sxQWq)}>
+          <div className={classNames(projectcss.all, sty.freeBox__jkIfK)}>
             <PlasmicImg__
               alt={""}
-              className={classNames(sty.img__j4Nl)}
+              className={classNames(sty.img__qdcye)}
               displayHeight={"auto"}
               displayMaxHeight={"none"}
               displayMaxWidth={"25%"}
@@ -270,10 +268,81 @@ function Plasmic_112NutritionScale__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 projectcss.__wab_text,
-                sty.text__axoqG
+                sty.text__utyhX
               )}
             >
               {"\u9000\u51fa"}
+            </div>
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__nAtkC)}>
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__xbk8T)}
+              displayHeight={"auto"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"25%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"auto"}
+              loading={"lazy"}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["goToPage"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        destination: (() => {
+                          try {
+                            return $ctx.config.routePrefix + "/";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
+                        }
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["goToPage"] != null &&
+                  typeof $steps["goToPage"] === "object" &&
+                  typeof $steps["goToPage"].then === "function"
+                ) {
+                  $steps["goToPage"] = await $steps["goToPage"];
+                }
+              }}
+              src={{
+                src: "/plasmic/gu_lou_patient/images/资源82Xpng.png",
+                fullWidth: 198,
+                fullHeight: 198,
+                aspectRatio: undefined
+              }}
+            />
+
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__eh0RV
+              )}
+            >
+              {"\u8fd4\u56de"}
             </div>
           </div>
         </div>
@@ -703,7 +772,7 @@ function Plasmic_112NutritionScale__RenderFunc(props: {
                     const actionArgs = {
                       destination: (() => {
                         try {
-                          return $ctx.config.routePrefix + "/Preparation";
+                          return $ctx.config.routePrefix + "/Scale";
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -745,7 +814,7 @@ function Plasmic_112NutritionScale__RenderFunc(props: {
                 sty.text__fRoYx
               )}
             >
-              {"\u8fd4\u56de"}
+              {"\u5b8c\u6210"}
             </div>
           </div>
         </div>
@@ -836,51 +905,9 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
   return func;
 }
 
-function withPlasmicPageGuard<P extends object>(
-  WrappedComponent: React.ComponentType<P>
-) {
-  const PageGuard: React.FC<P> = props => (
-    <PlasmicPageGuard__
-      minRole={null}
-      appId={"oGeya3WnsoRJC1KzKAMsFn"}
-      authorizeEndpoint={"https://studio.plasmic.app/authorize"}
-      canTriggerLogin={true}
-    >
-      <WrappedComponent {...props} />
-    </PlasmicPageGuard__>
-  );
-
-  return PageGuard;
-}
-
-function withUsePlasmicAuth<P extends object>(
-  WrappedComponent: React.ComponentType<P>
-) {
-  const WithUsePlasmicAuthComponent: React.FC<P> = props => {
-    const dataSourceCtx = usePlasmicDataSourceContext() ?? {};
-    const { isUserLoading, user, token } = plasmicAuth.usePlasmicAuth({
-      appId: "oGeya3WnsoRJC1KzKAMsFn"
-    });
-
-    return (
-      <PlasmicDataSourceContextProvider__
-        value={{
-          ...dataSourceCtx,
-          isUserLoading,
-          userAuthToken: token,
-          user
-        }}
-      >
-        <WrappedComponent {...props} />
-      </PlasmicDataSourceContextProvider__>
-    );
-  };
-  return WithUsePlasmicAuthComponent;
-}
-
 export const Plasmic_112NutritionScale = Object.assign(
   // Top-level Plasmic_112NutritionScale renders the root element
-  withUsePlasmicAuth(withPlasmicPageGuard(makeNodeComponent("root"))),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
     radioGroup: makeNodeComponent("radioGroup"),

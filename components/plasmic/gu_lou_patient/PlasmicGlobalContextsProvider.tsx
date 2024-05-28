@@ -7,18 +7,31 @@
 import * as React from "react";
 import { hasVariant, ensureGlobalVariants } from "@plasmicapp/react-web";
 import { AntdConfigProvider } from "@plasmicpkgs/antd5/skinny/registerConfigProvider";
+import { GlobalContext } from "@/src/components/GlobalContext"; // plasmic-import: BCiSvhMr64Lt/codeComponent
+import { EnvConfig } from "@/src/components/EnvConfig"; // plasmic-import: IqhrrcY0lh9r/codeComponent
 
 export interface GlobalContextsProviderProps {
   children?: React.ReactElement;
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
   >;
+  globalContextProps?: Partial<
+    Omit<React.ComponentProps<typeof GlobalContext>, "children">
+  >;
+  envConfigProps?: Partial<
+    Omit<React.ComponentProps<typeof EnvConfig>, "children">
+  >;
 }
 
 export default function GlobalContextsProvider(
   props: GlobalContextsProviderProps
 ) {
-  const { children, antdConfigProviderProps } = props;
+  const {
+    children,
+    antdConfigProviderProps,
+    globalContextProps,
+    envConfigProps
+  } = props;
 
   return (
     <AntdConfigProvider
@@ -113,7 +126,25 @@ export default function GlobalContextsProvider(
           : false
       }
     >
-      {children}
+      <GlobalContext
+        {...globalContextProps}
+        store={
+          globalContextProps && "store" in globalContextProps
+            ? globalContextProps.store!
+            : undefined
+        }
+      >
+        <EnvConfig
+          {...envConfigProps}
+          config={
+            envConfigProps && "config" in envConfigProps
+              ? envConfigProps.config!
+              : undefined
+          }
+        >
+          {children}
+        </EnvConfig>
+      </GlobalContext>
     </AntdConfigProvider>
   );
 }

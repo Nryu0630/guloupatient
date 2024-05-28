@@ -58,8 +58,8 @@ import {
   useDataEnv,
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
-import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
+
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -67,6 +67,8 @@ import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css";
 import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: oGeya3WnsoRJC1KzKAMsFn/projectcss
 import sty from "./Plasmic_3Medication.module.css"; // plasmic-import: 9qP1Gp2tCR8X/css
+
+import ChecksvgIcon from "../radix_ui/icons/PlasmicIcon__Checksvg"; // plasmic-import: Wyt3GMMsLefj/icon
 
 createPlasmicElementProxy;
 
@@ -81,6 +83,8 @@ export const Plasmic_3Medication__ArgProps = new Array<ArgPropType>();
 
 export type Plasmic_3Medication__OverridesType = {
   root?: Flex__<"div">;
+  svg?: Flex__<"svg">;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface Default_3MedicationProps {}
@@ -305,6 +309,14 @@ function Plasmic_3Medication__RenderFunc(props: {
                 }}
               >
                 {"\u7528\u836f"}
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__c31UW)}>
+                <ChecksvgIcon
+                  data-plasmic-name={"svg"}
+                  data-plasmic-override={overrides.svg}
+                  className={classNames(projectcss.all, sty.svg)}
+                  role={"img"}
+                />
               </div>
             </div>
           </div>
@@ -627,7 +639,9 @@ function Plasmic_3Medication__RenderFunc(props: {
                   const actionArgs = {
                     destination: (() => {
                       try {
-                        return $ctx.config.routePrefix + "/Home";
+                        return (
+                          $ctx.config.routePrefix + "/Patienteducationknowledge"
+                        );
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -672,19 +686,28 @@ function Plasmic_3Medication__RenderFunc(props: {
             {"\u8fd4\u56de"}
           </div>
         </div>
+        <SideEffect
+          data-plasmic-name={"sideEffect"}
+          data-plasmic-override={overrides.sideEffect}
+          className={classNames("__wab_instance", sty.sideEffect)}
+        />
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: ["root", "svg", "sideEffect"],
+  svg: ["svg"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  svg: "svg";
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -742,53 +765,13 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
   return func;
 }
 
-function withPlasmicPageGuard<P extends object>(
-  WrappedComponent: React.ComponentType<P>
-) {
-  const PageGuard: React.FC<P> = props => (
-    <PlasmicPageGuard__
-      minRole={null}
-      appId={"oGeya3WnsoRJC1KzKAMsFn"}
-      authorizeEndpoint={"https://studio.plasmic.app/authorize"}
-      canTriggerLogin={true}
-    >
-      <WrappedComponent {...props} />
-    </PlasmicPageGuard__>
-  );
-
-  return PageGuard;
-}
-
-function withUsePlasmicAuth<P extends object>(
-  WrappedComponent: React.ComponentType<P>
-) {
-  const WithUsePlasmicAuthComponent: React.FC<P> = props => {
-    const dataSourceCtx = usePlasmicDataSourceContext() ?? {};
-    const { isUserLoading, user, token } = plasmicAuth.usePlasmicAuth({
-      appId: "oGeya3WnsoRJC1KzKAMsFn"
-    });
-
-    return (
-      <PlasmicDataSourceContextProvider__
-        value={{
-          ...dataSourceCtx,
-          isUserLoading,
-          userAuthToken: token,
-          user
-        }}
-      >
-        <WrappedComponent {...props} />
-      </PlasmicDataSourceContextProvider__>
-    );
-  };
-  return WithUsePlasmicAuthComponent;
-}
-
 export const Plasmic_3Medication = Object.assign(
   // Top-level Plasmic_3Medication renders the root element
-  withUsePlasmicAuth(withPlasmicPageGuard(makeNodeComponent("root"))),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    svg: makeNodeComponent("svg"),
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for Plasmic_3Medication
     internalVariantProps: Plasmic_3Medication__VariantProps,

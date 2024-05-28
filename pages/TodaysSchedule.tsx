@@ -4,23 +4,23 @@ import * as React from "react";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
 import GlobalContextsProvider from "../components/plasmic/gu_lou_patient/PlasmicGlobalContextsProvider";
 
-import { Plasmic_1TodaysSchedule0000 } from "../components/plasmic/gu_lou_patient/Plasmic_1TodaysSchedule0000";
+import { Plasmic_21TodaysSchedule } from "../components/plasmic/gu_lou_patient/Plasmic_21TodaysSchedule";
 import { useRouter } from "next/router";
 
-function _1TodaysSchedule0000() {
-  // Use Plasmic_1TodaysSchedule0000 to render this component as it was
+function _21TodaysSchedule() {
+  // Use Plasmic_21TodaysSchedule to render this component as it was
   // designed in Plasmic, by activating the appropriate variants,
   // attaching the appropriate event handlers, etc.  You
   // can also install whatever React hooks you need here to manage state or
   // fetch data.
   //
-  // Props you can pass into Plasmic_1TodaysSchedule0000 are:
+  // Props you can pass into Plasmic_21TodaysSchedule are:
   // 1. Variants you want to activate,
   // 2. Contents for slots you want to fill,
   // 3. Overrides for any named node in the component to attach behavior and data,
   // 4. Props to set on the root node.
   //
-  // By default, Plasmic_1TodaysSchedule0000 is wrapped by your project's global
+  // By default, Plasmic_21TodaysSchedule is wrapped by your project's global
   // variant context providers. These wrappers may be moved to
   // Next.js Custom App component
   // (https://nextjs.org/docs/advanced-features/custom-app).
@@ -31,10 +31,10 @@ function _1TodaysSchedule0000() {
         params={useRouter()?.query}
         query={useRouter()?.query}
       >
-        <Plasmic_1TodaysSchedule0000 />
+        <Plasmic_21TodaysSchedule />
       </PageParamsProvider__>
     </GlobalContextsProvider>
   );
 }
 
-export default _1TodaysSchedule0000;
+export default _21TodaysSchedule;

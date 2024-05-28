@@ -118,6 +118,7 @@
   max-width: 100%;
   font-weight: 900;
   font-size: 20px;
+  text-align: center;
   min-width: 0;
   padding: 20px;
 }
@@ -138,7 +139,7 @@
   width: auto;
   height: auto;
   max-width: 100%;
-  padding: 30px 30px 100px;
+  padding: 30px 30px 107px;
 }
 .text__rdfYr {
   position: relative;
@@ -146,6 +147,7 @@
   height: auto;
   max-width: 100%;
   font-size: 18px;
+  font-weight: 600;
   padding: 8px;
 }
 .freeBox__y9Is0 {
@@ -173,4 +175,9 @@
   font-size: 20px;
   min-width: 0;
   padding: 5px;
+}
+.sideEffect:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+  position: relative;
 }

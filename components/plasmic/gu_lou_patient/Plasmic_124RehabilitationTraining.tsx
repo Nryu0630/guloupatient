@@ -58,8 +58,8 @@ import {
   useDataEnv,
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
-import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
+
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -83,6 +83,7 @@ export const Plasmic_124RehabilitationTraining__ArgProps =
 
 export type Plasmic_124RehabilitationTraining__OverridesType = {
   root?: Flex__<"div">;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface Default_124RehabilitationTrainingProps {}
@@ -254,19 +255,7 @@ function Plasmic_124RehabilitationTraining__RenderFunc(props: {
               sty.text__l9Dzu
             )}
           >
-            <React.Fragment>
-              <span
-                className={"plasmic_default__all plasmic_default__span"}
-                style={{
-                  id: "ne6N8JGRae",
-                  src: "康复训练",
-                  dst: "rehabilitation training ",
-                  metaData: ""
-                }}
-              >
-                {"\u5eb7\u590d\u8bad\u7ec3"}
-              </span>
-            </React.Fragment>
+            {"\u54d1\u94c3\u76f4\u4e3e"}
           </div>
           <PlasmicImg__
             alt={""}
@@ -309,7 +298,7 @@ function Plasmic_124RehabilitationTraining__RenderFunc(props: {
                     const actionArgs = {
                       destination: (() => {
                         try {
-                          return $ctx.config.routePrefix + "/Functionalscale";
+                          return $ctx.config.routePrefix + "/Completetraining";
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -351,23 +340,30 @@ function Plasmic_124RehabilitationTraining__RenderFunc(props: {
                 sty.text__sp0Lw
               )}
             >
-              {"\u8fd4\u56de"}
+              {"\u4e0b\u4e00\u6b65"}
             </div>
           </div>
         </div>
+        <SideEffect
+          data-plasmic-name={"sideEffect"}
+          data-plasmic-override={overrides.sideEffect}
+          className={classNames("__wab_instance", sty.sideEffect)}
+        />
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: ["root", "sideEffect"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -426,53 +422,12 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
   return func;
 }
 
-function withPlasmicPageGuard<P extends object>(
-  WrappedComponent: React.ComponentType<P>
-) {
-  const PageGuard: React.FC<P> = props => (
-    <PlasmicPageGuard__
-      minRole={null}
-      appId={"oGeya3WnsoRJC1KzKAMsFn"}
-      authorizeEndpoint={"https://studio.plasmic.app/authorize"}
-      canTriggerLogin={true}
-    >
-      <WrappedComponent {...props} />
-    </PlasmicPageGuard__>
-  );
-
-  return PageGuard;
-}
-
-function withUsePlasmicAuth<P extends object>(
-  WrappedComponent: React.ComponentType<P>
-) {
-  const WithUsePlasmicAuthComponent: React.FC<P> = props => {
-    const dataSourceCtx = usePlasmicDataSourceContext() ?? {};
-    const { isUserLoading, user, token } = plasmicAuth.usePlasmicAuth({
-      appId: "oGeya3WnsoRJC1KzKAMsFn"
-    });
-
-    return (
-      <PlasmicDataSourceContextProvider__
-        value={{
-          ...dataSourceCtx,
-          isUserLoading,
-          userAuthToken: token,
-          user
-        }}
-      >
-        <WrappedComponent {...props} />
-      </PlasmicDataSourceContextProvider__>
-    );
-  };
-  return WithUsePlasmicAuthComponent;
-}
-
 export const Plasmic_124RehabilitationTraining = Object.assign(
   // Top-level Plasmic_124RehabilitationTraining renders the root element
-  withUsePlasmicAuth(withPlasmicPageGuard(makeNodeComponent("root"))),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for Plasmic_124RehabilitationTraining
     internalVariantProps: Plasmic_124RehabilitationTraining__VariantProps,

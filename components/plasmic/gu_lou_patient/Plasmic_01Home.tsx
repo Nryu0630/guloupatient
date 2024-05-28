@@ -58,8 +58,8 @@ import {
   useDataEnv,
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
-import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
+
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -81,6 +81,7 @@ export const Plasmic_01Home__ArgProps = new Array<ArgPropType>();
 
 export type Plasmic_01Home__OverridesType = {
   root?: Flex__<"div">;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface Default_01HomeProps {}
@@ -371,8 +372,86 @@ function Plasmic_01Home__RenderFunc(props: {
             </div>
           </div>
           <div className={classNames(projectcss.all, sty.freeBox__s0I4X)}>
+            <div className={classNames(projectcss.all, sty.freeBox__nwgNg)}>
+              <div
+                className={classNames(projectcss.all, sty.freeBox__s08GN)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["goToPage"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          destination: (() => {
+                            try {
+                              return (
+                                $ctx.config.routePrefix + "/TodaysSchedule"
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToPage"] != null &&
+                    typeof $steps["goToPage"] === "object" &&
+                    typeof $steps["goToPage"].then === "function"
+                  ) {
+                    $steps["goToPage"] = await $steps["goToPage"];
+                  }
+                }}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__lwkeI)}>
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__sOxXk)}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"40%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/gu_lou_patient/images/资源2Png.png",
+                      fullWidth: 501,
+                      fullHeight: 501,
+                      aspectRatio: undefined
+                    }}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___91Xp6
+                  )}
+                >
+                  {"\u4eca\u65e5\u65e5\u7a0b"}
+                </div>
+              </div>
+            </div>
             <div
-              className={classNames(projectcss.all, sty.freeBox__s08GN)}
+              className={classNames(projectcss.all, sty.freeBox__r4Bwj)}
               onClick={async event => {
                 const $steps = {};
 
@@ -381,7 +460,7 @@ function Plasmic_01Home__RenderFunc(props: {
                       const actionArgs = {
                         destination: (() => {
                           try {
-                            return $ctx.config.routePrefix + "/Team";
+                            return $ctx.config.routePrefix + "/Scale";
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -416,33 +495,192 @@ function Plasmic_01Home__RenderFunc(props: {
                 }
               }}
             >
-              <div className={classNames(projectcss.all, sty.freeBox__lwkeI)}>
-                <PlasmicImg__
-                  alt={""}
-                  className={classNames(sty.img__sOxXk)}
-                  displayHeight={"auto"}
-                  displayMaxHeight={"none"}
-                  displayMaxWidth={"40%"}
-                  displayMinHeight={"0"}
-                  displayMinWidth={"0"}
-                  displayWidth={"auto"}
-                  loading={"lazy"}
-                  src={{
-                    src: "/plasmic/gu_lou_patient/images/资源2Png.png",
-                    fullWidth: 501,
-                    fullHeight: 501,
-                    aspectRatio: undefined
-                  }}
-                />
+              <div className={classNames(projectcss.all, sty.freeBox__x5OYu)}>
+                <div className={classNames(projectcss.all, sty.freeBox___0Be)}>
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__kq3To)}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"40%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/gu_lou_patient/images/_500Cx500Jpg.jpg",
+                      fullWidth: 500,
+                      fullHeight: 500,
+                      aspectRatio: undefined
+                    }}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ekMpW
+                  )}
+                >
+                  {"\u4eca\u65e5\u91cf\u8868"}
+                </div>
               </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___91Xp6
-                )}
-              >
-                {"\u4eca\u65e5\u65e5\u7a0b"}
+            </div>
+            <div
+              className={classNames(projectcss.all, sty.freeBox__uudNc)}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["goToPage"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        destination: (() => {
+                          try {
+                            return (
+                              $ctx.config.routePrefix + "/SafetyInstructions"
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
+                        }
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["goToPage"] != null &&
+                  typeof $steps["goToPage"] === "object" &&
+                  typeof $steps["goToPage"].then === "function"
+                ) {
+                  $steps["goToPage"] = await $steps["goToPage"];
+                }
+              }}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox__qsjlQ)}>
+                <div className={classNames(projectcss.all, sty.freeBox__bOPc0)}>
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__ewDow)}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"40%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/gu_lou_patient/images/iconexercisejpg.webp",
+                      fullWidth: 1024,
+                      fullHeight: 1024,
+                      aspectRatio: undefined
+                    }}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___4JrZd
+                  )}
+                >
+                  {"\u4eca\u65e5\u8bad\u7ec3"}
+                </div>
+              </div>
+            </div>
+            <div
+              className={classNames(projectcss.all, sty.freeBox__qtHu)}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["goToPage"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        destination: (() => {
+                          try {
+                            return (
+                              $ctx.config.routePrefix +
+                              "/Patienteducationknowledge"
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
+                        }
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["goToPage"] != null &&
+                  typeof $steps["goToPage"] === "object" &&
+                  typeof $steps["goToPage"].then === "function"
+                ) {
+                  $steps["goToPage"] = await $steps["goToPage"];
+                }
+              }}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox__asTzI)}>
+                <div className={classNames(projectcss.all, sty.freeBox__hPnW1)}>
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img___4G8GD)}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"40%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/gu_lou_patient/images/门诊01Png.png",
+                      fullWidth: 1418,
+                      fullHeight: 1418,
+                      aspectRatio: undefined
+                    }}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__fTGzm
+                  )}
+                >
+                  {"\u4eca\u65e5\u987b\u77e5"}
+                </div>
               </div>
             </div>
           </div>
@@ -601,85 +839,6 @@ function Plasmic_01Home__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__ejUfm)}>
-            <div
-              className={classNames(projectcss.all, sty.freeBox__bbWeC)}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["goToPage"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        destination: (() => {
-                          try {
-                            return (
-                              $ctx.config.routePrefix +
-                              "/Onthedayofadmissionthenursingteam"
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
-                      };
-                      return (({ destination }) => {
-                        if (
-                          typeof destination === "string" &&
-                          destination.startsWith("#")
-                        ) {
-                          document
-                            .getElementById(destination.substr(1))
-                            .scrollIntoView({ behavior: "smooth" });
-                        } else {
-                          __nextRouter?.push(destination);
-                        }
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["goToPage"] != null &&
-                  typeof $steps["goToPage"] === "object" &&
-                  typeof $steps["goToPage"].then === "function"
-                ) {
-                  $steps["goToPage"] = await $steps["goToPage"];
-                }
-              }}
-            >
-              <div className={classNames(projectcss.all, sty.freeBox__cBg2N)}>
-                <PlasmicImg__
-                  alt={""}
-                  className={classNames(sty.img___52SJo)}
-                  displayHeight={"auto"}
-                  displayMaxHeight={"none"}
-                  displayMaxWidth={"40%"}
-                  displayMinHeight={"0"}
-                  displayMinWidth={"0"}
-                  displayWidth={"auto"}
-                  loading={"lazy"}
-                  src={{
-                    src: "/plasmic/gu_lou_patient/images/_500X600画板1Png.png",
-                    fullWidth: 500,
-                    fullHeight: 500,
-                    aspectRatio: undefined
-                  }}
-                />
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__sSgXr
-                )}
-              >
-                {"\u5165\u9662\u5f53\u5929"}
-              </div>
-            </div>
-          </div>
         </div>
         <div className={classNames(projectcss.all, sty.freeBox__mzPeo)}>
           <div
@@ -734,19 +893,26 @@ function Plasmic_01Home__RenderFunc(props: {
             {"\u8fd4\u56de"}
           </div>
         </div>
+        <SideEffect
+          data-plasmic-name={"sideEffect"}
+          data-plasmic-override={overrides.sideEffect}
+          className={classNames("__wab_instance", sty.sideEffect)}
+        />
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: ["root", "sideEffect"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -804,53 +970,12 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
   return func;
 }
 
-function withPlasmicPageGuard<P extends object>(
-  WrappedComponent: React.ComponentType<P>
-) {
-  const PageGuard: React.FC<P> = props => (
-    <PlasmicPageGuard__
-      minRole={null}
-      appId={"oGeya3WnsoRJC1KzKAMsFn"}
-      authorizeEndpoint={"https://studio.plasmic.app/authorize"}
-      canTriggerLogin={true}
-    >
-      <WrappedComponent {...props} />
-    </PlasmicPageGuard__>
-  );
-
-  return PageGuard;
-}
-
-function withUsePlasmicAuth<P extends object>(
-  WrappedComponent: React.ComponentType<P>
-) {
-  const WithUsePlasmicAuthComponent: React.FC<P> = props => {
-    const dataSourceCtx = usePlasmicDataSourceContext() ?? {};
-    const { isUserLoading, user, token } = plasmicAuth.usePlasmicAuth({
-      appId: "oGeya3WnsoRJC1KzKAMsFn"
-    });
-
-    return (
-      <PlasmicDataSourceContextProvider__
-        value={{
-          ...dataSourceCtx,
-          isUserLoading,
-          userAuthToken: token,
-          user
-        }}
-      >
-        <WrappedComponent {...props} />
-      </PlasmicDataSourceContextProvider__>
-    );
-  };
-  return WithUsePlasmicAuthComponent;
-}
-
 export const Plasmic_01Home = Object.assign(
   // Top-level Plasmic_01Home renders the root element
-  withUsePlasmicAuth(withPlasmicPageGuard(makeNodeComponent("root"))),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for Plasmic_01Home
     internalVariantProps: Plasmic_01Home__VariantProps,

@@ -58,10 +58,9 @@ import {
   useDataEnv,
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
-import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
 import { Video } from "@plasmicpkgs/plasmic-basic-components";
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -86,6 +85,7 @@ export type Plasmic_123Icecompress__OverridesType = {
   root?: Flex__<"div">;
   img?: Flex__<typeof PlasmicImg__>;
   htmlVideo?: Flex__<typeof Video>;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface Default_123IcecompressProps {}
@@ -275,7 +275,10 @@ function Plasmic_123Icecompress__RenderFunc(props: {
                     const actionArgs = {
                       destination: (() => {
                         try {
-                          return $ctx.config.routePrefix + "/Functionalscale";
+                          return (
+                            $ctx.config.routePrefix +
+                            "/Rehabilitationpatienteducation"
+                          );
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -317,19 +320,25 @@ function Plasmic_123Icecompress__RenderFunc(props: {
                 sty.text__fwWg0
               )}
             >
-              {"\u8fd4\u56de"}
+              {"\u5b8c\u6210"}
             </div>
           </div>
         </div>
+        <SideEffect
+          data-plasmic-name={"sideEffect"}
+          data-plasmic-override={overrides.sideEffect}
+          className={classNames("__wab_instance", sty.sideEffect)}
+        />
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "img", "htmlVideo"],
+  root: ["root", "img", "htmlVideo", "sideEffect"],
   img: ["img"],
-  htmlVideo: ["htmlVideo"]
+  htmlVideo: ["htmlVideo"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -338,6 +347,7 @@ type NodeDefaultElementType = {
   root: "div";
   img: typeof PlasmicImg__;
   htmlVideo: typeof Video;
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -395,55 +405,14 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
   return func;
 }
 
-function withPlasmicPageGuard<P extends object>(
-  WrappedComponent: React.ComponentType<P>
-) {
-  const PageGuard: React.FC<P> = props => (
-    <PlasmicPageGuard__
-      minRole={null}
-      appId={"oGeya3WnsoRJC1KzKAMsFn"}
-      authorizeEndpoint={"https://studio.plasmic.app/authorize"}
-      canTriggerLogin={true}
-    >
-      <WrappedComponent {...props} />
-    </PlasmicPageGuard__>
-  );
-
-  return PageGuard;
-}
-
-function withUsePlasmicAuth<P extends object>(
-  WrappedComponent: React.ComponentType<P>
-) {
-  const WithUsePlasmicAuthComponent: React.FC<P> = props => {
-    const dataSourceCtx = usePlasmicDataSourceContext() ?? {};
-    const { isUserLoading, user, token } = plasmicAuth.usePlasmicAuth({
-      appId: "oGeya3WnsoRJC1KzKAMsFn"
-    });
-
-    return (
-      <PlasmicDataSourceContextProvider__
-        value={{
-          ...dataSourceCtx,
-          isUserLoading,
-          userAuthToken: token,
-          user
-        }}
-      >
-        <WrappedComponent {...props} />
-      </PlasmicDataSourceContextProvider__>
-    );
-  };
-  return WithUsePlasmicAuthComponent;
-}
-
 export const Plasmic_123Icecompress = Object.assign(
   // Top-level Plasmic_123Icecompress renders the root element
-  withUsePlasmicAuth(withPlasmicPageGuard(makeNodeComponent("root"))),
+  makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
     img: makeNodeComponent("img"),
     htmlVideo: makeNodeComponent("htmlVideo"),
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for Plasmic_123Icecompress
     internalVariantProps: Plasmic_123Icecompress__VariantProps,
